@@ -68,8 +68,6 @@ class CompressionUtilTest extends JUnitSuite {
 
     val decompressedMessages = CompressionUtils.decompress(message)
 
-    TestUtils.checkLength(decompressedMessages.iterator,3)
-
-    TestUtils.checkEquals(messages.iterator, TestUtils.getMessageIterator(decompressedMessages.iterator))
+    TestUtils.checkEquals(messages.iterator, decompressedMessages.iterator)
   }
 }

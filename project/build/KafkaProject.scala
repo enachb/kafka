@@ -20,6 +20,10 @@ import scala.xml.{Node, Elem, NodeSeq}
 import scala.xml.transform.{RewriteRule, RuleTransformer}
 
 class KafkaProject(info: ProjectInfo) extends ParentProject(info) with IdeaProject {
+
+  override def managedStyle = ManagedStyle.Maven
+  val publishTo = "Quantifind Repo" at "http://repo.quantifind.com/content/repositories/ext-releases/"
+
   lazy val core = project("core", "core-kafka", new CoreKafkaProject(_))
   lazy val examples = project("examples", "java-examples", new KafkaExamplesProject(_), core)
   lazy val contrib = project("contrib", "contrib", new ContribProject(_))
